@@ -15,6 +15,7 @@ hs_err_pid*
 # don't commit the answers
 */example/*
 out*.txt
+diff*.txt
 
 # Don't commit student data
 **/student
