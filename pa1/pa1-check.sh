@@ -8,7 +8,7 @@ if [ ! -e testDir ]; then
 fi
 
 
-cp -rf !(\.revisions|testDir|pa*) testDir   # copy everything but .revisions into
+cp -rf !(testDir) testDir   # copy everything but .revisions into
                                        # the folder
 
 cd testDir
