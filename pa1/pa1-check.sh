@@ -31,7 +31,8 @@ if [ ! -e Lex ] || [ ! -x Lex ]; then # exist and executable
    chmod +x Lex
 fi
 
-
+echo ""
+echo ""
 echo "Lex tests: If nothing between '=' signs, then test is passed:"
 for NUM in $(seq 1 $NUMTESTS); do
    echo "Test $NUM:"
