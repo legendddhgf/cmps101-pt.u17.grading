@@ -7,8 +7,8 @@ if [ ! -e testDir ]; then
    mkdir testDir
 fi
 
-cp -rf !(.revisions|testDir) testDir   # copy everything but .revisions into
-                                       # the folder
+cp -rf !(.revisions|testDir) # copy everything but .revisions into
+                                   # the folder
 
 cd testDir
 
