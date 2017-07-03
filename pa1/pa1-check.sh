@@ -3,13 +3,12 @@
 SRCDIR=https://raw.githubusercontent.com/legendddhgf/cmps101-pt.u17.grading/master/pa1
 NUMTESTS=3
 
-if [ ! -e testDir ]; then
-   mkdir testDir
+if [ ! -e backup ]; then
+   mkdir backup
 fi
 
 
-cp -rf !(testDir) testDir   # copy everything but .revisions into
-                                       # the folder
+cp *.java Makefile backup   # copy all files of importance into backup
 
 cd testDir
 
