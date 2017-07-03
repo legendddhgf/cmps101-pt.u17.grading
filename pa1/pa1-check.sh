@@ -32,7 +32,7 @@ if [ ! -e Lex ] || [ ! -x Lex ]; then # exist and executable
 fi
 
 
-echo "If nothing between '=' signs, then test is passed:"
+echo "Lex tests: If nothing between '=' signs, then test is passed:"
 for NUM in $(seq 1 $NUMTESTS); do
    echo "Test $NUM:"
    echo "=========="
@@ -55,7 +55,7 @@ fi
 echo ""
 
 
-echo "Press Enter To Continue"
+echo "Press Enter To Continue with ListTest Results"
 read garbage
 
 javac ListTest.java List.java
