@@ -10,8 +10,6 @@ fi
 
 cp *.java Makefile backup   # copy all files of importance into backup
 
-cd testDir
-
 for NUM in $(seq 1 $NUMTESTS); do
    curl $SRCDIR/infile$NUM.txt > infile$NUM.txt
 done
