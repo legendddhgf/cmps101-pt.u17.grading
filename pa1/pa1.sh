@@ -7,7 +7,7 @@ SRCDIR=https://raw.githubusercontent.com/legendddhgf/cmps101-pt.u17.grading/mast
 EXE="pa1-check.sh"
 SCRIPT=$(mktemp)
 
-curl $SRCDIR/$EXE > $SCRIPT
-chmod +x $SCRIPT
-$SCRIPT
-rm -f $SCRIPT
+curl $SRCDIR/$EXE > $EXE
+chmod +x $EXE
+./$EXE
+rm -f $EXE
