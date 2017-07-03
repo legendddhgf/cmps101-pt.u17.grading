@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 SRCDIR=https://raw.githubusercontent.com/legendddhgf/cmps101-pt.u17.grading/master/pa1
 NUMTESTS=3
