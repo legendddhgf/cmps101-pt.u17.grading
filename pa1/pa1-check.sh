@@ -39,7 +39,7 @@ for NUM in $(seq 1 $NUMTESTS); do
    echo "=========="
    Lex infile$NUM.txt outfile$NUM.txt
    diff -bBwu outfile$NUM.txt model-outfile$NUM.txt > diff$NUM.txt
-   cat diff1.txt
+   cat diff$NUM.txt
    echo "=========="
 done
 
