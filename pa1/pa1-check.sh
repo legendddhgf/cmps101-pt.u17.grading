@@ -37,7 +37,7 @@ echo "Lex tests: If nothing between '=' signs, then test is passed:"
 for NUM in $(seq 1 $NUMTESTS); do
    echo "Test $NUM:"
    echo "=========="
-   Lex infile$NUM.txt outfile$NUM.txt
+   timeout 5 Lex infile$NUM.txt outfile$NUM.txt &> garbage >> garbage
    diff -bBwu outfile$NUM.txt model-outfile$NUM.txt > diff$NUM.txt
    cat diff$NUM.txt
    echo "=========="
