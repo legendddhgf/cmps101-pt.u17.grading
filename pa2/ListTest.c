@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 #define FIRST_TEST Empty_length
 
@@ -49,6 +50,8 @@ enum Test_e {
 
    Empty_toString,
    NonEmpty_toString,
+
+   NUM_TESTS,
 }
 
 
@@ -101,19 +104,24 @@ char *testName(int test) {
    return "";
 }
 
+bool runTest(int test) {
 
+}
 
 int main (int argc, char **argv) {
+   if (argc > 2 || (argc == 2 && strcmp(argv[1], "-v") != 0)) {
+      printf("Usage: %s [-v]", (argc > 0 ? argv[0] : "./ListTest"));
+      exit(1);
+   }
+
+   testsPassed = 0;
+
+   for (uint8_t i = 0; i < NUM_TESTS; i++) {
+
+   }
 
 
-
-
-
-
-
-
-
-
+   
 
    return 0;
 }

@@ -17,6 +17,9 @@ done
 
 curl $SRCDIR/ListTest.c > ListTest.c
 
+echo ""
+echo ""
+
 make
 
 if [ ! -e Lex ] || [ ! -x Lex ]; then # exist and executable
@@ -45,6 +48,7 @@ make clean
 
 
 echo ""
+echo ""
 
 if [ -e Lex ] || [ -e *.o ]; then
    echo "WARNING: Makefile didn't successfully clean all files"
@@ -68,5 +72,4 @@ fi
 cat ListTest-out.txt
 
 rm -f *.o ListTest Lex
-
 
