@@ -1,4 +1,4 @@
-# cmps101-pt.u17/pa1
+# cmps101-pt.u17/pa2
 
 The following is a set of performance tests to run on your Lex program. It
 takes three example input files and compares your results to our correct model
@@ -11,8 +11,8 @@ Run the following in your working directory (the directory you wrote your code
 in) to get the test script and example input files:
 
 ```bash
-curl https://raw.githubusercontent.com/legendddhgf/cmps101-pt.u17.grading/master/pa1/pa1.sh > pa1.sh
-chmod +x pa1.sh
+curl https://raw.githubusercontent.com/legendddhgf/cmps101-pt.u17.grading/master/pa2/pa2.sh > pa2.sh
+chmod +x pa2.sh
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ chmod +x pa1.sh
 After installation, you can run the script with this line:
 
 ```bash
-./pa1.sh
+./pa2.sh
 ```
 
 It will print out the difference between your output and the correct output,
