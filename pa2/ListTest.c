@@ -121,7 +121,7 @@ int main (int argc, char **argv) {
    }
 
 
-   
+   printf("Just do it!!! ...%s\n", argc == 1 ? "Simply" : "Like a Noob");
 
    return 0;
 }
