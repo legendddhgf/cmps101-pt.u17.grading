@@ -15,7 +15,8 @@ for NUM in $(seq 1 $NUMTESTS); do
    curl $SRCDIR/model-outfile$NUM.txt > model-outfile$NUM.txt
 done
 
-curl $SRCDIR/ListTest.c > ListTest.c
+#FIXME: not yet ready
+#curl $SRCDIR/ListTest.c > ListTest.c
 
 echo ""
 echo ""
