@@ -20,7 +20,7 @@ Click on the relevant link below for more information on an assignment.
 ### Programs
 
 - [pa1](pa1)
-- (pa2)
+- [pa2](pa2)
 - (pa3)
 - (pa4)
 - (pa5)
