@@ -41,9 +41,6 @@ class ListTest {
   static int Set_back;
   static int NonEmpty_back;
 
-  static int Empty_copy;
-  static int NonEmpty_copy;
-
   static int Empty_toString;
   static int NonEmpty_toString;
 
@@ -87,9 +84,6 @@ class ListTest {
     if (test == NonEmpty_front) return "NonEmpty_front";
     if (test == Set_back) return "Set_back";
     if (test == NonEmpty_back) return "NonEmpty_back";
-
-    if (test == Empty_copy) return "Empty_copy";
-    if (test == NonEmpty_copy) return "NonEmpty_copy";
 
     if (test == Empty_toString) return "Empty_toString";
     if (test == NonEmpty_toString) return "NonEmpty_toString";
@@ -146,9 +140,6 @@ class ListTest {
     NonEmpty_front = testCount++;
     Set_back = testCount++;
     NonEmpty_back = testCount++;
-
-    Empty_copy = testCount++;
-    NonEmpty_copy = testCount++;
 
     Empty_toString = testCount++;
     NonEmpty_toString = testCount++;
@@ -509,13 +500,13 @@ class ListTest {
           A.prepend(2);
           A.deleteFront();
           A.moveBack();
-          if (A.get() == 1) testsPassed.set(i);
+          if ((int) A.get() == 1) testsPassed.set(i);
         } else if (i == Set_front) {
           A = new List();
           A.append(1);
           A.prepend(5);
           A.moveBack();
-          if (A.front() == 5) testsPassed.set(i);
+          if ((int) A.front() == 5) testsPassed.set(i);
         } else if (i == NonEmpty_front) {
           A = new List();
           A.prepend(5);
@@ -525,13 +516,13 @@ class ListTest {
           A.insertBefore(43);
           A.deleteFront();
           A.delete();
-          if (A.front() == 5) testsPassed.set(i);
+          if ((int) A.front() == 5) testsPassed.set(i);
         } else if (i == Set_back) {
           A = new List();
           A.prepend(1);
           A.append(5);
           A.moveFront();
-          if (A.back() == 5) testsPassed.set(i);
+          if ((int) A.back() == 5) testsPassed.set(i);
         } else if (i == NonEmpty_back) {
           A = new List();
           A.append(5);
@@ -541,18 +532,7 @@ class ListTest {
           A.insertAfter(43);
           A.deleteBack();
           A.delete();
-          if (A.back() == 5) testsPassed.set(i);
-        } else if (i == Empty_copy) {
-          A = new List();
-          B = A.copy();
-          if (A.equals(B)) testsPassed.set(i);
-        } else if (i == NonEmpty_copy) {
-          A = new List();
-          A.append(2);
-          A.prepend(1);
-          A.moveFront();
-          B = A.copy();
-          if (A.index() == 0 && A.equals(B)) testsPassed.set(i);
+          if ((int) A.back() == 5) testsPassed.set(i);
         } else if (i == Empty_toString) {
           A = new List();
           if (A.toString().equals("")) testsPassed.set(i);
