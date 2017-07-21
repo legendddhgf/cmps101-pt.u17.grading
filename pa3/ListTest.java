@@ -1,5 +1,21 @@
 import java.util.BitSet;
 
+class ObjectTestClass {
+  int i;
+  double d;
+  String str;
+
+  ObjectTestClass(int i, double d, String str) {
+    this.i = i;
+    this.d = d;
+    this.str = str;
+  }
+
+  public String toString() {
+    return i + "," + d + "," + str;
+  }
+}
+
 class ListTest {
 
   static int Empty_length;
@@ -543,7 +559,25 @@ class ListTest {
           A.deleteBack();
           A.append(7);
           A.append(1);
-          if (A.toString().equals("5 7 1")) testsPassed.set(i);
+          if (!A.toString().equals("5 7 1")) continue;
+          A = new List();
+          A.append(1.0);
+          A.prepend(5.0);
+          A.deleteBack();
+          A.append(7.5);
+          A.append(1.43);
+          if (!A.toString().equals("5.0 7.5 1.43")) continue;
+          A = new List();
+          ObjectTestClass obj1 = new ObjectTestClass(1, 4.5, "hello");
+          A.append(obj1);
+          ObjectTestClass obj2 = new ObjectTestClass(5, 3.14, "how");
+          A.prepend(obj2);
+          A.deleteBack();
+          ObjectTestClass obj3 = new ObjectTestClass(7, 75.5, "are");
+          A.append(obj3);
+          ObjectTestClass obj4 = new ObjectTestClass(1, 1.43, "you");
+          A.append(obj4);
+          if (A.toString().equals("5,3.14,how 7,75.5,are 1,1.43,you")) testsPassed.set(i);
         }
       }catch (Exception e) {
         if (verbose) {
