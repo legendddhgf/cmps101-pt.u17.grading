@@ -34,6 +34,7 @@ fi
 echo ""
 echo ""
 
+sparsepassed=$(expr 0)
 echo "Sparse tests: If nothing between '=' signs, then test is passed:"
 for NUM in $(seq 1 $NUMTESTS); do
    echo "Test $NUM:"
@@ -42,7 +43,16 @@ for NUM in $(seq 1 $NUMTESTS); do
    diff -bBwu outfile$NUM.txt model-outfile$NUM.txt > diff$NUM.txt
    cat diff$NUM.txt
    echo "=========="
+   if [ -e diff$NUM.txt ] && [[ ! -s diff$NUM.txt ]]; then # increment number of tests passed counter
+     let sparsepassed+=1
+   fi
 done
+
+echo ""
+echo ""
+
+let sparsepoints=2*sparsepassed
+echo "Passed $sparsepassed Sparse tests for a total of $sparsepoints / 10 points"
 
 echo ""
 echo ""

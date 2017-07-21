@@ -602,7 +602,7 @@ class ListTest {
 
     final int totalPoints = (maxScore - testCount / 4) + testsPassed.cardinality() / 4;
 
-    System.out.printf("\nThis gives you a score of %d out of %d for this component of the assignment\n\n", totalPoints, maxScore);
+    System.out.printf("\nThis gives you a score of %d out of %d for ListTest\n\n", totalPoints, maxScore);
   }
 }
 
