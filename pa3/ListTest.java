@@ -598,9 +598,9 @@ class ListTest {
 
     System.out.printf("\nPassed %d tests out of %d possible\n", testsPassed.cardinality(), testCount);
 
-    final int maxScore = 55;
+    final int maxScore = 10;
 
-    final int totalPoints = (maxScore - testCount) + testsPassed.cardinality();
+    final int totalPoints = (maxScore - testCount / 4) + testsPassed.cardinality() / 4;
 
     System.out.printf("\nThis gives you a score of %d out of %d for this component of the assignment\n\n", totalPoints, maxScore);
   }
