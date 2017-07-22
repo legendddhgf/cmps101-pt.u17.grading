@@ -18,50 +18,44 @@ class ObjectTestClass {
 
 class MatrixTest {
 
-  static int Empty_length;
-  static int Append_length;
-  static int Prepend_length;
-  static int InsertAfter_length;
-  static int InsertBefore_length;
-  static int DeleteFront_length;
-  static int DeleteBack_length;
-  static int Delete_length;
+  static int Empty_getSize;
+  static int NonEmpty_getSize;
 
-  static int EmptyList_index;
-  static int MoveFront_index;
-  static int MoveBack_index;
-  static int MoveNext_index;
-  static int MovePrev_index;
-  static int Append_index;
-  static int Prepend_index;
-  static int InsertAfter_index;
-  static int InsertBefore_index;
-  static int DeleteFront_index;
-  static int DeleteBack_index;
-  static int Delete_index;
+  static int Empty_getNNZ;
+  static int makeZero_getNNZ;
+  static int changeEntry_getNNZ;
+  static int copy_getNNZ;
+  static int transpose_getNNZ;
+  static int add_getNNZ;
+  static int sub_getNNZ;
+  static int scalarMult_getNNZ;
+  static int mult_getNNZ;
 
-  static int Append_equals;
-  static int Prepend_equals;
-  static int InsertAfter_equals;
-  static int InsertBefore_equals;
-  static int DeleteFront_equals;
-  static int DeleteBack_equals;
-  static int Delete_equals;
-
-  static int Empty_clear;
-  static int NonEmpty_clear;
-
-  static int Set_get;
-  static int Set_front;
-  static int NonEmpty_front;
-  static int Set_back;
-  static int NonEmpty_back;
+  static int Empty_equals;
+  static int NonEmpty_equals;
 
   static int Empty_toString;
   static int NonEmpty_toString;
 
-
   static String testName(int test) {
+
+    if (test == Empty_getSize) return "Empty_getSize";
+    if (test == NonEmpty_getSize) return "NonEmpty_getSize";
+
+    if (test == Empty_getNNZ) return "Empty_getNNZ";
+    if (test == makeZero_getNNZ) return "makeZero_getNNZ";
+    if (test == changeEntry_getNNZ) return "changeEntry_getNNZ";
+    if (test == copy_getNNZ) return "copy_getNNZ";
+    if (test == transpose_getNNZ) return "transpose_getNNZ";
+    if (test == add_getNNZ) return "add_getNNZ";
+    if (test == sub_getNNZ) return "sub_getNNZ";
+    if (test == scalarMult_getNNZ) return "scalarMult_getNNZ";
+    if (test == mult_getNNZ) return "mult_getNNZ";
+
+    if (test == Empty_equals) return "Empty_equals";
+    if (test == NonEmpty_equals) return "NonEmpty_equals";
+
+    if (test == Empty_toString) return "Empty_toString";
     if (test == NonEmpty_toString) return "NonEmpty_toString";
 
     return "";
@@ -78,43 +72,117 @@ class MatrixTest {
 
     int testCount = 0;
     // form is TESTCASE_FUNCTION
+    Empty_getSize = testCount++;
+    NonEmpty_getSize = testCount++;
+
+    Empty_getNNZ = testCount++;
+    makeZero_getNNZ = testCount++;
+    changeEntry_getNNZ = testCount++;
+    copy_getNNZ = testCount++;
+    transpose_getNNZ = testCount++;
+    add_getNNZ = testCount++;
+    sub_getNNZ = testCount++;
+    scalarMult_getNNZ = testCount++;
+    mult_getNNZ = testCount++;
+
+    Empty_equals = testCount++;
+    NonEmpty_equals = testCount++;
+
+    Empty_toString = testCount++;
     NonEmpty_toString = testCount++;
 
     // set for bits where tests are passed based off above bitmasks
     BitSet testsPassed = new BitSet(testCount); // all tests are 0 (failed) by default
 
-    List A;
-    List B;
-
     int i = 0;
+
+    Matrix A;
+    Matrix B;
+    Matrix C;
+    Matrix D;
+
     for (i = 0; i < testCount; i++) {
       try {
-        if (i == NonEmpty_toString) {
-          A = new List();
-          A.append(1);
-          A.prepend(5);
-          A.deleteBack();
-          A.append(7);
-          A.append(1);
-          if (!A.toString().equals("5 7 1")) continue;
-          A = new List();
-          A.append(1.0);
-          A.prepend(5.0);
-          A.deleteBack();
-          A.append(7.5);
-          A.append(1.43);
-          if (!A.toString().equals("5.0 7.5 1.43")) continue;
-          A = new List();
-          ObjectTestClass obj1 = new ObjectTestClass(1, 4.5, "hello");
-          A.append(obj1);
-          ObjectTestClass obj2 = new ObjectTestClass(5, 3.14, "how");
-          A.prepend(obj2);
-          A.deleteBack();
-          ObjectTestClass obj3 = new ObjectTestClass(7, 75.5, "are");
-          A.append(obj3);
-          ObjectTestClass obj4 = new ObjectTestClass(1, 1.43, "you");
-          A.append(obj4);
-          if (A.toString().equals("5,3.14,how 7,75.5,are 1,1.43,you")) testsPassed.set(i);
+        if (i == Empty_getSize) {
+          A = new Matrix(3);
+          if (A.getSize() == 3) testsPassed.set(i);
+        } else if (i == NonEmpty_getSize) {
+          A = new Matrix(3);
+          A.changeEntry(1, 1, 4);
+          A.changeEntry(1, 2, 2);
+          A.changeEntry(1, 3, 0);
+          A.changeEntry(2, 1, 2);
+          A.changeEntry(3, 1, 0);
+          A.changeEntry(2, 2, 2);
+          A.changeEntry(3, 3, 0);
+          if (A.getSize() == 3) testsPassed.set(i);
+        } else if (i == Empty_getNNZ) {
+          A = new Matrix(3);
+          if (A.getNNZ() == 0) testsPassed.set(i);
+        } else if (i == makeZero_getNNZ) {
+          A = new Matrix(3);
+          A.changeEntry(1, 1, 4);
+          A.changeEntry(1, 2, 2);
+          A.changeEntry(1, 3, 0);
+          A.changeEntry(2, 1, 2);
+          A.changeEntry(3, 1, 0);
+          A.changeEntry(2, 2, 2);
+          A.changeEntry(3, 3, 0);
+          A.makeZero();
+          if (A.getNNZ() == 0) testsPassed.set(i);
+        } else if (i == changeEntry_getNNZ) {
+          A = new Matrix(10);
+          A.changeEntry(1, 1, 4);
+          A.changeEntry(1, 2, 2);
+          A.changeEntry(1, 3, 5);
+          A.changeEntry(2, 1, 2);
+          A.changeEntry(3, 1, 5);
+          A.changeEntry(2, 2, 2);
+          A.changeEntry(3, 3, 5);
+          if (A.getNNZ() != 7) continue; //part 1 of this test
+          A.changeEntry(1, 3, 0);
+          A.changeEntry(3, 1, 0);
+          A.changeEntry(3, 3, 0);
+          if (A.getNNZ() != 4) continue; //part 2 of this test
+          A.changeEntry(7, 6, 42);
+          A.changeEntry(10, 1, 24);
+          if (A.getNNZ() != 6) continue; //part 3 of this test
+          A.changeEntry(7, 6, 0);
+          if (A.getNNZ() != 5) continue; //part 4 of this test
+          A.makeZero();
+          A.changeEntry(5, 5, 5);
+          if (A.getNNZ() == 1) testsPassed.set(i);
+        } else if (i == copy_getNNZ) {
+          A = new Matrix(10);
+          B = A.copy();
+          if (B.getNNZ() != 0) continue; //part 1 of this test
+          A.changeEntry(1, 1, 1);
+          B = A.copy();
+          if (B.getNNZ() == 1) testsPassed.set(i);
+        } else if (i == transpose_getNNZ) {
+          A = new Matrix(3);
+          B = A.transpose();
+          if (B.getNNZ() != 0) continue; //part 1 of this test
+          A.changeEntry(1, 1, 4);
+          A.changeEntry(1, 2, 2);
+          A.changeEntry(1, 3, 0);
+          A.changeEntry(2, 1, 2);
+          A.changeEntry(3, 1, 0);
+          A.changeEntry(2, 2, 2);
+          A.changeEntry(3, 3, 0);
+          B = A.transpose();
+          if (B.getNNZ() == 4) testsPassed.set(i);
+        } else if (i == add_getNNZ) {
+        } else if (i == sub_getNNZ) {
+        } else if (i == scalarMult_getNNZ) {
+        } else if (i == mult_getNNZ) {
+
+        } else if (i == Empty_equals) {
+        } else if (i == NonEmpty_equals) {
+
+        } else if (i == Empty_toString) {
+        } else if (i == NonEmpty_toString) {
+
         }
       }catch (Exception e) {
         if (verbose) {
@@ -131,15 +199,14 @@ class MatrixTest {
         System.out.printf("%s %s\n", testName(i), testsPassed.get(i) ? "PASSED" : "FAILED");
       }
       System.out.println();
+      System.out.printf("\nPassed %d tests out of %d possible\n", testsPassed.cardinality(), testCount);
     }
-
-    System.out.printf("\nPassed %d tests out of %d possible\n", testsPassed.cardinality(), testCount);
 
     final int maxScore = 60;
 
-    final int totalPoints = (maxScore - testCount) + testsPassed.cardinality();
+    final int totalPoints = (maxScore - testCount * 3) + testsPassed.cardinality() * 3; // three points per test
 
-    System.out.printf("\nThis gives you a score of %d out of %d for this component of the assignment\n\n", totalPoints, maxScore);
+    System.out.printf("\nThis gives you a score of %d out of %d for MatrixTest\n\n", totalPoints, maxScore);
   }
 }
 
