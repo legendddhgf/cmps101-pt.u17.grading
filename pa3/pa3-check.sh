@@ -83,5 +83,21 @@ fi
 
 cat ListTest-out.txt
 
-rm *.class
+echo ""
+echo ""
+
+echo "Press Enter To Continue with MatrixTest Results (type v for verbose mode)"
+read garbage
+
+javac MatrixTest.java Matrix.java List.java
+
+if [ "$garbage" = "v" ]; then
+   timeout 2 java MatrixTest -v > MatrixTest-out.txt &>> MatrixTest-out.txt
+else
+   timeout 2 java MatrixTest > MatrixTest-out.txt &>> MatrixTest-out.txt
+fi
+
+cat MatrixTest-out.txt
+
+rm -f *.class
 
