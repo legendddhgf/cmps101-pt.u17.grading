@@ -1,21 +1,5 @@
 import java.util.BitSet;
 
-class ObjectTestClass {
-  int i;
-  double d;
-  String str;
-
-  ObjectTestClass(int i, double d, String str) {
-    this.i = i;
-    this.d = d;
-    this.str = str;
-  }
-
-  public String toString() {
-    return i + "," + d + "," + str;
-  }
-}
-
 class MatrixTest {
 
   static int Empty_getSize;
