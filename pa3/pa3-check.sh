@@ -16,6 +16,7 @@ for NUM in $(seq 1 $NUMTESTS); do
 done
 
 curl $SRCDIR/ListTest.java > ListTest.java
+curl $SRCDIR/MatrixTest.java > MatrixTest.java
 
 make
 
