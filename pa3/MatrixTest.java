@@ -329,12 +329,13 @@ class MatrixTest {
         System.out.printf("%s %s\n", testName(i), testsPassed.get(i) ? "PASSED" : "FAILED");
       }
       System.out.println();
-      System.out.printf("\nPassed %d tests out of %d possible\n", testsPassed.cardinality(), testCount);
     }
 
     final int maxScore = 60;
 
     final int totalPoints = (maxScore - testCount * 4) + testsPassed.cardinality() * 4; // four points per test
+
+    System.out.printf("\nPassed %d tests out of %d possible\n", testsPassed.cardinality(), testCount);
 
     System.out.printf("\nThis gives you a score of %d out of %d for MatrixTest\n\n", totalPoints, maxScore);
   }
