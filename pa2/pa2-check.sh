@@ -37,7 +37,7 @@ echo "Lex tests: If nothing between '=' signs, then test is passed:"
 for NUM in $(seq 1 $NUMTESTS); do
    echo "Lex Test $NUM:"
    echo "=========="
-   valgrind Lex infile$NUM.txt outfile$NUM.txt &> valgrind-out$NUM.txt
+   timeout 2 valgrind Lex infile$NUM.txt outfile$NUM.txt &> valgrind-out$NUM.txt
    diff -bBwu outfile$NUM.txt model-outfile$NUM.txt > diff$NUM.txt
    cat diff$NUM.txt
    echo "=========="
@@ -77,9 +77,9 @@ gcc -c -std=c99 -Wall ListTest.c List.c
 gcc -o ListTest ListTest.o List.o
 
 if [ "$garbage" = "v" ]; then
-   valgrind ./ListTest -v > ListTest-out.txt
+   timeout 2 valgrind ./ListTest -v > ListTest-out.txt
 else
-   valgrind ./ListTest > ListTest-out.txt
+   timeout 2 valgrind ./ListTest > ListTest-out.txt
 fi
 
 cat ListTest-out.txt
