@@ -15,8 +15,8 @@ for NUM in $(seq 1 $NUMTESTS); do
    curl $SRCDIR/model-outfile$NUM.txt > model-outfile$NUM.txt
 done
 
-curl $SRCDIR/ListTest.java > ListTest.java
-curl $SRCDIR/MatrixTest.java > MatrixTest.java
+curl $SRCDIR/ListTest.java > ModelListTest.java
+curl $SRCDIR/MatrixTest.java > ModelMatrixTest.java
 
 make
 
@@ -41,7 +41,7 @@ for NUM in $(seq 1 $NUMTESTS); do
    echo "Test $NUM:"
    echo "=========="
    timeout 2 Sparse infile$NUM.txt outfile$NUM.txt &> garbage >> garbage
-   diff -bBwu outfile$NUM.txt model-outfile$NUM.txt > diff$NUM.txt
+   diff -bBwu outfile$NUM.txt model-outfile$NUM.txt > diff$NUM.txt &>> diff$NUM.txt
    cat diff$NUM.txt
    echo "=========="
    if [ -e diff$NUM.txt ] && [[ ! -s diff$NUM.txt ]]; then # increment number of tests passed counter
@@ -74,12 +74,12 @@ fi
 echo "Press Enter To Continue with ListTest Results (type v for verbose mode)"
 read garbage
 
-javac ListTest.java List.java
+javac ModelListTest.java List.java
 
 if [ "$garbage" = "v" ]; then
-   timeout 2 java ListTest -v > ListTest-out.txt &>> ListTest-out.txt
+   timeout 2 java ModelListTest -v > ListTest-out.txt &>> ListTest-out.txt
 else
-   timeout 2 java ListTest > ListTest-out.txt &>> ListTest-out.txt
+   timeout 2 java ModelListTest > ListTest-out.txt &>> ListTest-out.txt
 fi
 
 cat ListTest-out.txt
@@ -90,12 +90,12 @@ echo ""
 echo "Press Enter To Continue with MatrixTest Results (type v for verbose mode)"
 read garbage
 
-javac MatrixTest.java Matrix.java List.java
+javac ModelMatrixTest.java Matrix.java List.java
 
 if [ "$garbage" = "v" ]; then
-   timeout 2 java MatrixTest -v > MatrixTest-out.txt &>> MatrixTest-out.txt
+   timeout 2 java ModelMatrixTest -v > MatrixTest-out.txt &>> MatrixTest-out.txt
 else
-   timeout 2 java MatrixTest > MatrixTest-out.txt &>> MatrixTest-out.txt
+   timeout 2 java ModelMatrixTest > MatrixTest-out.txt &>> MatrixTest-out.txt
 fi
 
 cat MatrixTest-out.txt
