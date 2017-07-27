@@ -16,7 +16,7 @@ class ObjectTestClass {
   }
 }
 
-class ListTest {
+class ModelListTest {
 
   static int Empty_length;
   static int Append_length;

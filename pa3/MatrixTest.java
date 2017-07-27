@@ -1,6 +1,6 @@
 import java.util.BitSet;
 
-class MatrixTest {
+class ModelMatrixTest {
 
   static int Empty_getSize;
   static int NonEmpty_getSize;
