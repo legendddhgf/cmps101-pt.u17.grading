@@ -40,7 +40,7 @@ echo "Sparse tests: If nothing between '=' signs, then test is passed:"
 for NUM in $(seq 1 $NUMTESTS); do
    echo "Test $NUM:"
    echo "=========="
-   timeout 2 Sparse infile$NUM.txt outfile$NUM.txt &> garbage >> garbage
+   timeout 5 Sparse infile$NUM.txt outfile$NUM.txt &> garbage >> garbage
    diff -bBwu outfile$NUM.txt model-outfile$NUM.txt > diff$NUM.txt &>> diff$NUM.txt
    cat diff$NUM.txt
    echo "=========="
@@ -93,9 +93,9 @@ read garbage
 javac ModelMatrixTest.java Matrix.java List.java
 
 if [ "$garbage" = "v" ]; then
-   timeout 2 java ModelMatrixTest -v > MatrixTest-out.txt &>> MatrixTest-out.txt
+   timeout 5 java ModelMatrixTest -v > MatrixTest-out.txt &>> MatrixTest-out.txt
 else
-   timeout 2 java ModelMatrixTest > MatrixTest-out.txt &>> MatrixTest-out.txt
+   timeout 5 java ModelMatrixTest > MatrixTest-out.txt &>> MatrixTest-out.txt
 fi
 
 cat MatrixTest-out.txt
