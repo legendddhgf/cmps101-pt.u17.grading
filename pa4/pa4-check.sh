@@ -54,7 +54,7 @@ echo ""
 
 let pathtestspoints=2*pathtestspassed
 if [ "$pathtestspoints" -gt "10" ]; then # max 10 points
-  let pathtestspassed=$(expr 10)
+  let pathtestspoints=$(expr 10)
 fi
 echo "Passed $pathtestspassed FindPath tests for a total of $pathtestspoints / 10 points"
 
