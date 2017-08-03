@@ -7,12 +7,12 @@ if [ ! -e backup ]; then
    mkdir backup
 fi
 
-
 cp *.c *.h Makefile backup   # copy all files of importance into backup
 
 for NUM in $(seq 1 $NUMTESTS); do
    curl $SRCDIR/infile$NUM.txt > infile$NUM.txt
    curl $SRCDIR/model-outfile$NUM.txt > model-outfile$NUM.txt
+   rm -f outfile$NUM.txt
 done
 
 curl $SRCDIR/ListTest.c > ListTest.c
@@ -72,9 +72,6 @@ echo ""
 
 echo "Press Enter To Continue with ListTest Results (type v for verbose mode)"
 read garbage
-
-echo ""
-echo ""
 
 gcc -c -std=c99 -Wall ListTest.c List.c
 gcc -o ListTest ListTest.o List.o
