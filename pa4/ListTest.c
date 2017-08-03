@@ -7,7 +7,7 @@
 #include "List.h"
 
 #define FIRST_TEST Empty_length
-#define MAXSCORE 10
+#define MAXSCORE 20
 
 enum Test_e {
   Empty_length = 0,
@@ -559,7 +559,7 @@ int main (int argc, char **argv) {
     freeList(&B);
   }
 
-  uint8_t totalScore = (MAXSCORE - NUM_TESTS / 4) + testsPassed / 4;
+  uint8_t totalScore = (MAXSCORE - NUM_TESTS / 2) + testsPassed / 2;
 
   if (argc == 2) printf("\nYou passed %d out of %d tests\n", testsPassed,
       NUM_TESTS);
