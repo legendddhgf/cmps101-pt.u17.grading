@@ -16,7 +16,7 @@ for NUM in $(seq 1 $NUMTESTS); do
 done
 
 curl $SRCDIR/ListTest.c > ListTest.c
-curl $SRCDIR/GraphTest.c > GraphTest.c
+curl $SRCDIR/GraphTest.c > ModelGraphTest.c
 
 echo ""
 echo ""
@@ -84,5 +84,22 @@ fi
 
 cat ListTest-out.txt
 
-rm -f *.o ListTest GraphTest FindPath garbage
+echo ""
+echo ""
+
+echo "Press Enter To Continue with GraphTest Results (type v for verbose mode)"
+read garbage
+
+gcc -c -std=c99 -Wall ModelGraphTest.c Graph.c List.c
+gcc -o ModelGraphTest ModelGraphTest.o Graph.o List.o
+
+if [ "$garbage" = "v" ]; then
+   timeout 5 ./ModelGraphTest -v
+else
+   timeout 5 ./ModelGraphTest
+fi
+
+
+
+rm -f *.o ListTest ModelGraphTest FindPath garbage
 
