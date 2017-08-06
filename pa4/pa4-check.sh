@@ -94,9 +94,9 @@ gcc -c -std=c99 -Wall ModelGraphTest.c Graph.c List.c
 gcc -o ModelGraphTest ModelGraphTest.o Graph.o List.o
 
 if [ "$garbage" = "v" ]; then
-   timeout 5 ./ModelGraphTest -v
+   timeout 5 valgrind ./ModelGraphTest -v
 else
-   timeout 5 ./ModelGraphTest
+   timeout 5 valgrind ./ModelGraphTest
 fi
 
 
