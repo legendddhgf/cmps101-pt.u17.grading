@@ -6,10 +6,6 @@ outputs. It also includes a testing client for your List and Graph ADT's as per
 the requirements of PA4. We have made this available to you to check your work
 before making your final submission.
 
-## NOTE
-
-GraphTest isn't yet implemented
-
 ## Installation
 
 Run the following in your working directory (the directory you wrote your code
