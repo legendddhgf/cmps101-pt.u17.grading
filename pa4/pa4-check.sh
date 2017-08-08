@@ -28,8 +28,8 @@ if [ ! -e FindPath ] || [ ! -x FindPath ]; then # exist and executable
    echo "Makefile doesn't correctly create Executable!!!"
    echo ""
    rm -f *.o FindPath
-   gcc -c -std=c99 -Wall FindPath.c List.c
-   gcc -o FindPath FindPath.o List.o
+   gcc -c -std=c99 -Wall FindPath.c Graph.c List.c
+   gcc -o FindPath FindPath.o Graph.o List.o
 fi
 
 echo ""
