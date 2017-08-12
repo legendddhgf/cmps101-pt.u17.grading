@@ -56,7 +56,7 @@ let componenttestspoints=2*componenttestspassed
 if [ "$componenttestspoints" -gt "20" ]; then # max 10 points
   let componenttestspoints=$(expr 20)
 fi
-echo "Passed $componenttestspassed FindComponents tests for a total of $componenttestspoints / 10 points"
+echo "Passed $componenttestspassed FindComponents tests for a total of $componenttestspoints / 20 points"
 
 echo ""
 echo ""
