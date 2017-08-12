@@ -15,7 +15,7 @@ for NUM in $(seq 1 $NUMTESTS); do
    rm -f outfile$NUM.txt
 done
 
-curl $SRCDIR/ListTest.c > ListTest.c
+curl $SRCDIR/ListTest.c > ModelListTest.c
 curl $SRCDIR/GraphTest.c > ModelGraphTest.c
 
 echo ""
@@ -73,13 +73,13 @@ echo ""
 echo "Press Enter To Continue with ListTest Results (type v for verbose mode)"
 read garbage
 
-gcc -c -std=c99 -Wall ListTest.c List.c
-gcc -o ListTest ListTest.o List.o
+gcc -c -std=c99 -Wall ModelListTest.c List.c
+gcc -o ModelListTest ModelListTest.o List.o
 
 if [ "$garbage" = "v" ]; then
-   timeout 5 ./ListTest -v > ListTest-out.txt
+   timeout 5 ./ModelListTest -v > ListTest-out.txt
 else
-   timeout 5 ./ListTest > ListTest-out.txt
+   timeout 5 ./ModelListTest > ListTest-out.txt
 fi
 
 cat ListTest-out.txt
@@ -101,5 +101,5 @@ fi
 
 
 
-rm -f *.o ListTest ModelGraphTest FindComponents garbage
+rm -f *.o ModelListTest ModelGraphTest FindComponents garbage
 
