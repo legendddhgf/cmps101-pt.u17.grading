@@ -103,8 +103,6 @@ uint8_t runTest(Graph *pA, List *pL, int test) {
         if (getDiscover(A, 64) != 73) return 3;
         if (getDiscover(A, 4) != 80) return 4;
         DFS(A, L);
-        printf("The list is:\n");
-        printList(stdout, L)
         if (getDiscover(A, 4) != 134) return 5;
         if (getDiscover(A, 63) != 125) return 6;
         DFS(A, L);
@@ -130,8 +128,6 @@ uint8_t runTest(Graph *pA, List *pL, int test) {
         if (getFinish(A, 64) != 82) return 3;
         if (getFinish(A, 42) != 78) return 4;
         DFS(A, L);
-        printf("The list is:\n");
-        printList(stdout, L)
         if (getFinish(A, 64) != 136) return 5;
         if (getFinish(A, 63) != 126) return 6;
         DFS(A, L);
@@ -164,6 +160,9 @@ int main (int argc, char **argv) {
     printf("Usage: %s [-v]", (argc > 0 ? argv[0] : "./GraphTest"));
     exit(1);
   }
+
+  printf("GraphTest isn't ready yet\n");
+  if (1) exit(1);
 
   printf("\n"); // more spacing
   if (argc == 2) printf("\n"); // consistency in verbose mode

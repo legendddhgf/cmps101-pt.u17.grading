@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 SRCDIR=https://raw.githubusercontent.com/legendddhgf/cmps101-pt.u17.grading/master/pa5
-NUMTESTS=10
+NUMTESTS=7
 
 if [ ! -e backup ]; then
    mkdir backup
@@ -52,7 +52,7 @@ done
 echo ""
 echo ""
 
-let componenttestspoints=2*componenttestspassed
+let componenttestspoints=3*componenttestspassed
 if [ "$componenttestspoints" -gt "20" ]; then # max 10 points
   let componenttestspoints=$(expr 20)
 fi
@@ -84,6 +84,8 @@ fi
 
 cat ListTest-out.txt
 
+:<<'COMMENT'
+
 echo ""
 echo ""
 
@@ -99,7 +101,10 @@ else
    timeout 5 valgrind ./ModelGraphTest
 fi
 
+COMMENT
 
+echo ""
+echo ""
 
 rm -f *.o ModelListTest ModelGraphTest FindComponents garbage
 
