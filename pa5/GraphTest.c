@@ -103,10 +103,10 @@ uint8_t runTest(Graph *pA, List *pL, int test) {
         if (getDiscover(A, 64) != 73) return 3;
         if (getDiscover(A, 4) != 80) return 4;
         DFS(A, L);
-        if (getDiscover(A, 2) != 73) return 5;
-        if (getDiscover(A, 63) != 83) return 6;
+        if (getDiscover(A, 4) != 134) return 5;
+        if (getDiscover(A, 63) != 125) return 6;
         DFS(A, L);
-        if (getDiscover(A, 42) != 73) return 7;
+        if (getDiscover(A, 65) != 137) return 7;
         if (getDiscover(A, 1) != 199) return 8;
         return 0;
       }
@@ -128,11 +128,11 @@ uint8_t runTest(Graph *pA, List *pL, int test) {
         if (getFinish(A, 64) != 82) return 3;
         if (getFinish(A, 42) != 78) return 4;
         DFS(A, L);
-        if (getDiscover(A, 2) != 82) return 5;
-        if (getDiscover(A, 63) != 84) return 6;
+        if (getFinish(A, 64) != 136) return 5;
+        if (getFinish(A, 63) != 126) return 6;
         DFS(A, L);
-        if (getDiscover(A, 42) != 82) return 7;
-        if (getDiscover(A, 1) != 199) return 8;
+        if (getFinish(A, 65) != 138) return 7;
+        if (getFinish(A, 1) != 200) return 8;
         return 0;
       }
     case UG_getSize:
