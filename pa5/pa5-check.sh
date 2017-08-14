@@ -56,7 +56,7 @@ let componenttestspoints=3*componenttestspassed
 if [ "$componenttestspoints" -gt "20" ]; then # max 10 points
   let componenttestspoints=$(expr 20)
 fi
-echo "Passed $componenttestspassed FindComponents tests for a total of $componenttestspoints / 20 points"
+echo "Passed $componenttestspassed/7 FindComponents tests for a total of $componenttestspoints/20 points"
 
 echo ""
 echo ""
@@ -84,8 +84,6 @@ fi
 
 cat ListTest-out.txt
 
-:<<'COMMENT'
-
 echo ""
 echo ""
 
@@ -100,8 +98,6 @@ if [ "$garbage" = "v" ]; then
 else
    timeout 5 valgrind ./ModelGraphTest
 fi
-
-COMMENT
 
 echo ""
 echo ""

@@ -103,10 +103,10 @@ uint8_t runTest(Graph *pA, List *pL, int test) {
         if (getDiscover(A, 64) != 73) return 3;
         if (getDiscover(A, 4) != 80) return 4;
         DFS(A, L);
-        if (getDiscover(A, 4) != 134) return 5;
-        if (getDiscover(A, 63) != 125) return 6;
+        if (getDiscover(A, 4) != 126) return 5;
+        if (getDiscover(A, 63) != 117) return 6;
         DFS(A, L);
-        if (getDiscover(A, 65) != 137) return 7;
+        if (getDiscover(A, 65) != 71) return 7;
         if (getDiscover(A, 1) != 199) return 8;
         return 0;
       }
@@ -128,28 +128,100 @@ uint8_t runTest(Graph *pA, List *pL, int test) {
         if (getFinish(A, 64) != 82) return 3;
         if (getFinish(A, 42) != 78) return 4;
         DFS(A, L);
-        if (getFinish(A, 64) != 136) return 5;
-        if (getFinish(A, 63) != 126) return 6;
+        if (getFinish(A, 64) != 128) return 5;
+        if (getFinish(A, 63) != 118) return 6;
         DFS(A, L);
-        if (getFinish(A, 65) != 138) return 7;
+        if (getFinish(A, 65) != 72) return 7;
         if (getFinish(A, 1) != 200) return 8;
         return 0;
       }
     case UG_getSize:
       {
-        return 255;
+        if (getSize(A) != 0) return 1;
+        addEdge(A, 54, 1);
+        addEdge(A, 54, 2);
+        addEdge(A, 54, 3);
+        addEdge(A, 1, 55);
+        if (getSize(A) != 4) return 2;
+        for (uint8_t i = 1; i <= 100; i++) {
+          append(L, i);
+        }
+        DFS(A, L);
+        if (getSize(A) != 4) return 3;
+        addEdge(A, 1, 56);
+        if (getSize(A) != 5) return 4;
+        return 0;
       }
     case UG_getParent:
       {
-        return 255;
+        for (uint8_t i = 1; i <= 100; i++)
+          if (getParent(A, i) != NIL) return 1;
+        addEdge(A, 64, 4);
+        addEdge(A, 64, 3);
+        addEdge(A, 42, 2);
+        addEdge(A, 2, 64);
+        addEdge(A, 4, 2);
+        addEdge(A, 3, 42);
+        for (uint8_t i = 1; i <= 100; i++) {
+          append(L, i);
+        }
+        DFS(A, L);
+        if (getParent(A, 100) != NIL) return 2;
+        if (getParent(A, 2) != NIL) return 3;
+        if (getParent(A, 42) != 3) return 4;
+        if (getParent(A, 3) != 64) return 5;
+        if (getParent(A, 4) != 2) return 6;
+        return 0;
       }
     case UG_getDiscover:
       {
-        return 255;
+        for (uint8_t i = 1; i <= 100; i++)
+          if (getDiscover(A, i) != UNDEF) return 1;
+        addEdge(A, 64, 4);
+        addEdge(A, 64, 3);
+        addEdge(A, 42, 2);
+        addEdge(A, 2, 64);
+        addEdge(A, 4, 2);
+        addEdge(A, 3, 42);
+        for (uint8_t i = 1; i <= 100; i++) {
+          prepend(L, i);
+        }
+        DFS(A, L);
+        if (getDiscover(A, 100) != 1) return 2;
+        if (getDiscover(A, 64) != 73) return 3;
+        if (getDiscover(A, 4) != 75) return 4;
+        DFS(A, L);
+        if (getDiscover(A, 4) != 121) return 5;
+        if (getDiscover(A, 63) != 117) return 6;
+        DFS(A, L);
+        if (getDiscover(A, 65) != 71) return 7;
+        if (getDiscover(A, 1) != 199) return 8;
+        return 0;
       }
     case UG_getFinish:
       {
-        return 255;
+        for (uint8_t i = 1; i <= 100; i++)
+          if (getFinish(A, i) != UNDEF) return 1;
+        addEdge(A, 64, 4);
+        addEdge(A, 64, 3);
+        addEdge(A, 42, 2);
+        addEdge(A, 2, 64);
+        addEdge(A, 4, 2);
+        addEdge(A, 3, 42);
+        for (uint8_t i = 1; i <= 100; i++) {
+          prepend(L, i);
+        }
+        DFS(A, L);
+        if (getFinish(A, 100) != 2) return 2;
+        if (getFinish(A, 64) != 82) return 3;
+        if (getFinish(A, 42) != 80) return 4;
+        DFS(A, L);
+        if (getFinish(A, 64) != 128) return 5;
+        if (getFinish(A, 63) != 118) return 6;
+        DFS(A, L);
+        if (getFinish(A, 65) != 72) return 7;
+        if (getFinish(A, 1) != 200) return 8;
+        return 0;
       }
   }
   return 255;
@@ -161,8 +233,8 @@ int main (int argc, char **argv) {
     exit(1);
   }
 
-  printf("GraphTest isn't ready yet\n");
-  if (1) exit(1);
+  //printf("GraphTest isn't ready yet\n");
+  //if (1) exit(1);
 
   printf("\n"); // more spacing
   if (argc == 2) printf("\n"); // consistency in verbose mode
